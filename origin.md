@@ -1,4 +1,4 @@
-- Origin
+# Origin for signed package content
 * localStorage
   * Key is using 'appId:t/f:subdomainsDBKey'
     see [DOMStorageManager.cpp](https://dxr.mozilla.org/mozilla-central/source/dom/storage/DOMStorageManager.cpp#199)
