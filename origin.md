@@ -44,6 +44,9 @@ For the signed content has to be of different origin, I've listed the componenet
 * csp
   * [nsIContentPolicy.idl](https://dxr.mozilla.org/mozilla-central/source/dom/base/nsIContentPolicy.idl) still uses nsIURI instead of nsIPrincipal.
   * uses prepath for certified apps.[DXR](https://dxr.mozilla.org/mozilla-central/source/dom/security/nsCSPService.cpp#147)
+  * prepath will be removed in [Bug 1030936 - \[CSP\] remove fast-path for certified apps once the C++ backend is activated](https://bugzilla.mozilla.org/show_bug.cgi?id=1030936)
+* service worker
+  * See [Bug 1162088 - ServiceWorker is reused between apps with the same origin](https://bugzilla.mozilla.org/show_bug.cgi?id=1162088)
 * broadcast_channel
   * BroadcastChannel uses manifestURL for the origin
   * [BroadcastChannel#GetOrigin](https://dxr.mozilla.org/mozilla-central/source/dom/broadcastchannel/BroadcastChannel.cpp#53)
