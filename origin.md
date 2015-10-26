@@ -3,6 +3,7 @@ Web APIs are mostly origin-based, however on FirefoxOS we use an *Extended Origi
 {appId + isBrowserElement + origin}.
 
 For the signed content has to be of different origin, I've listed the componenets needs to be changed.
+The meta-bug is [Bug 1179985 - [meta] Make all Origin-Related APIs OriginAttributes-aware](https://bugzilla.mozilla.org/show_bug.cgi?id=1179985)
 
 * localStorage
   * Filed [Bug 1165214 - DOMStorageManager should use origin as ScopeKey and QuotaKey](https://bugzilla.mozilla.org/show_bug.cgi?id=1165214)
@@ -22,7 +23,7 @@ For the signed content has to be of different origin, I've listed the componenet
   * [ManagerId.h](https://dxr.mozilla.org/mozilla-central/source/dom/cache/ManagerId.h)
   * [Bug 940273 - Implement Cache and CacheStorage for ServiceWorkers](https://bugzilla.mozilla.org/show_bug.cgi?id=940273)
 * [nsIQuotaManager](https://dxr.mozilla.org/mozilla-central/source/dom/quota/nsIQuotaManager.idl)
-  * Filed [Bug 1165224 - Use origin in QuotaManager ](https://bugzilla.mozilla.org/show_bug.cgi?id=1163254)
+  * Filed [Bug 1195930 - Use origin in QuotaManager ](https://bugzilla.mozilla.org/show_bug.cgi?id=1195930)
   * Quota per origin [https://dxr.mozilla.org/mozilla-central/source/dom/quota/QuotaManager.cpp#1396]
   * Quota Limit on eTLD+1
 * app_cache
@@ -68,13 +69,4 @@ For the signed content has to be of different origin, I've listed the componenet
   * jarPrefix(appId + isBrowserElement) is used by [shared-pool](https://bugzilla.mozilla.org/show_bug.cgi?id=785884)
 * [nsIDocShell.idl](https://dxr.mozilla.org/mozilla-central/source/docshell/base/nsIDocShell.idl)
 * [nsILoadContext.idl](https://dxr.mozilla.org/mozilla-central/source/docshell/base/nsILoadContext.idl)
-
-# Consumers for nsIPrincipal needs to be updated.
-* calling nsIPrincipal.subsumes/equals
-  * TBD (Will bholley change the signature of nsIPrincipal.subsume()?)
-* calling nsIPrincipal.origin
-  * TBD (will origin contain 'signedAppName' ?)
-* places may have problems on checking origins without using interfaces of nsIPrincipal.
-  * TBD (can Jonas/Bholley provide some examples about wrong usage?)
-  * docshell/base/nsDocShell.cpp # AddSessionStorage
 
